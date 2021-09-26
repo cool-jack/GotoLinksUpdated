@@ -19,12 +19,23 @@ public class CategoryBean {
 	@Column(name="category_name")
 	private String categoryName;
 	
-	public CategoryBean() {}
+	@Column(name = "user_id")
+	private int userId;
 	
+	public CategoryBean() {}
 
-	public CategoryBean(String categoryName) {
+	public CategoryBean(String categoryName, int userId) {
 		super();
 		this.categoryName = categoryName;
+		this.userId = userId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public int getCategoryId() {

@@ -1,45 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style type="text/css">
+.top-buffer { margin-top:50px; }
+</style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>User Login</title>
+<title>Edit Category</title>
 <style type="text/css">
 .top-buffer { margin-top:50px; }
 </style>
 </head>
 <body>
-	<div class="container">
+<div class="container top-buffer">
+<div class="mx-auto" style="width: 400px;"><h3>${message}</h3></div>
+<div class="mx-auto" style="width: 400px;"><table> <tr><td><a href="/addCategory" class="btn btn-primary" style="width: 170px;">Add new Category</a></td><td><a href="/showHomePage" class="btn btn-primary" style="width: 170px;">Back to Home</a></td></tr></table></div>
+<div class="mx-auto" style="width: 400px;"><h3>${userBean.firstName}'s Bookmark categories</h3></div>
+
+	<table class="table mx-auto" style="width: 400px;">
+		<thead>
+			<tr>
+				<th>Category Label</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${categoryList}" var="category">
+				<tr>
+					<td>${category.categoryName}</td>
+					<td><a href="/editCategory?categoryId=${category.categoryId}" class="btn btn-primary" >Update</a> <a href="/deleteCategory?categoryId=${category.categoryId}" class="btn btn-danger">Delete</a></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>
 	
-		<div class="top-buffer">
-		<p align="center"><font color="red">${message}</font></p>
-			<div class="row">
-				<div class="mx-auto"><h2>Login</h2> </div>
-			</div>
-			<div class="row">
-				
-				<div class="mx-auto" style="width: 320px;" > 
-					<form method="post">
-						<div class="form-group">
-							<label>Email Address</label>
-							<input class="form-control" type="email" name="email" placeholder = "Email" />
-						</div>
-						<div class="form-group">
-							<label>Password</label>
-							<input class="form-control" type="password" name="password" placeholder = "password" />
-							<small><a href="#" style="align:right;">Forgot password?</a></small>
-						</div>
-						<div class="mx-auto">
-							<input type="submit" class="btn btn-info" style="width: 100px;" value="Login">
-							not registered yet? <a href="/register" class="">Sign Up</a>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 	
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
